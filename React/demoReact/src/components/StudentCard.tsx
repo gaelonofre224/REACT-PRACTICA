@@ -1,28 +1,27 @@
-import { Avatar } from './Avatar'
-import { Card } from './Card'
+import { Avatar } from './Avatar';
+import { Card } from './Card';
 
 export interface Student {
-  nombre: string,
-  apellido: string,
-  edad: number,
-  carrera: string
-  Semestre: number,
-  correo: string,
-  matricula: string
+  nombre: string;
+  apellido: string;
+  edad: number;
+  carrera: string;
+  Semestre: number;
+  correo: string;
+  matricula: string;
 }
 
-interface studentProps 
-{
-  student: Student
-  
+interface studentProps {
+  student: Student;
+  onDelete?: (matricula: string) => void;
 }
 
-export const StudentCard = ({ student }: studentProps) => {
+export const StudentCard = ({ student, onDelete }: studentProps) => {
   return (
     <Card
       header={
         <div className="cluster">
-          <Avatar firstName ={student.nombre} lastName={student.apellido} />
+          <Avatar firstName={student.nombre} lastName={student.apellido} />
           <div className="stack stack--tight grow">
             <div className="cluster cluster--spread">
               <h4>{student.nombre} {student.apellido}</h4>
@@ -40,6 +39,17 @@ export const StudentCard = ({ student }: studentProps) => {
           <button className="btn btn--secondary btn--sm" type="button">
             Editar
           </button>
+          
+          {onDelete && (
+            <button
+              className="btn btn--secondary btn--sm"
+              type="button"
+              style={{ color: '#e53e3e', borderColor: '#feb2b2' }}
+              onClick={() => onDelete(student.matricula)}
+            >
+              Eliminar
+            </button>
+          )}
         </div>
       }
     >
@@ -50,7 +60,7 @@ export const StudentCard = ({ student }: studentProps) => {
         </div>
         <div className="meta-list__row">
           <dt className="meta-list__label">Edad</dt>
-          <dd className="meta-list__value">{student.edad} anos</dd>
+          <dd className="meta-list__value">{student.edad} años</dd>
         </div>
         <div className="meta-list__row">
           <dt className="meta-list__label">Semestre</dt>
@@ -62,5 +72,5 @@ export const StudentCard = ({ student }: studentProps) => {
         </div>
       </dl>
     </Card>
-  )
-}
+  );
+};

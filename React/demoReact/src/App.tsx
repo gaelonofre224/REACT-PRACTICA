@@ -8,6 +8,7 @@ import { students } from './Data/students'
 import { Contador } from "./components/Contador"
 import AddProduct from './components/AddProduct'
 import {ProductForm} from './components/ProductForm'
+import {StudentForm} from './components/StudentForm'
 
 export const App = () => {
 
@@ -26,7 +27,7 @@ export const App = () => {
         ))}  */}
         {/* <Contador/> */}
          <AddProduct/> 
-        <ProductForm/>
+        <StudentForm/>
       </div>
     </main>
  )
