@@ -1,0 +1,1 @@
+import { type ProductReference} from  '../types/productTypes'
